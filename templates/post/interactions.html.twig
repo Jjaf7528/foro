@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block body %}
+
+    {{parent()}}
+    {# #}
+    {% for post in post %}
+
+    <div class="container my-2  bg-white">
+        <h5 class="py-3"><a href="/"><i class="fa-solid fa-arrow-left-long"></i> Regresar</a></h5>
+        <!--    ocultar en sm-->
+        <div class="d-none  d-md-block bg-white p-3">
+            <div class="text-left mx-3">
+                <h1> 
+                {{post.title}}                   |    
+                        <button class="add_favorite" style="background-color: transparent; border: 1px solid transparent">
+                                <span style="color: orange"><i class="fa-solid fa-star" id="49"></i></span>
+                        </button>                    
+                </h1>
+                <p>Fecha de Publicación: {{post.creation_date | date }} </p>
+                <div class="my-2">
+                    <span class="alert-success py-1 px-5">{{post.type}}</span>
+                </div>
+            </div>               
+                <div class="text-center my-4">
+                {% if post.file != null %}
+                        <img src="{{ asset('uploads/files/' ~ post.file) }}" alt="Not found" width="25%">
+                {% endif %}    
+                </div>                     
+            <div class="text-justify">
+                Descripcion: {{post.description}}
+            </div>
+        </div>
+        
+
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}              
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="p-3 bg-white border rounded my-4">
+                                <form name="interaction" method="post">
+                                    <div id="interaction">
+                                        <div class="form-group">                                            
+                                            {{form(registration_form)}}
+                                        </div>                            
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+            {% else %}
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-dark my-4 border">Si deseas comentar, por favor
+                             <a href="/registration">Registrate</a> o
+                             <a href="/login">Inicia sesión</a>
+                             </div>
+                        </div>
+                    </div>
+
+            {% endif %}  
+
+            {% if interactions %}
+                    
+                {% for interaction in interactions %}
+                    <div class="row">            
+                        <div class="col-md-12">            
+                            <div class="col-md-12 my-2 alert alert-info text-justify">
+                                <div class="my-3"><strong>{{interaction.email}}, comentó:</strong>
+                                    <div>
+                                        {{interaction.comment}}
+                                    </div>
+                                </div>                                  
+                            </div>  
+                {% endfor %} 
+                        <br>
+            {% else %} 
+                        <div class="col-md-12 my-2 alert alert-warning border">NO hay comentarios! sé el primero</div>        
+                            <br>   
+                        </div>                         
+                    </div>                     
+            {% endif %}   
+
+    </div>
+    {% endfor %}                           
+
+{% endblock %}
+
+                   

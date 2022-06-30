@@ -1,0 +1,142 @@
+{# Post ID #}
+    <div class="container">
+        
+        {% for post in post %}
+
+            <h1>{{post.title}}</h1>
+            <h2>{{post.type}}</h2>
+            <img src="{{ asset('uploads/files/' ~ post.file) }}" alt="Not found" width="25%">
+    {% endfor %}
+
+    </div>
+
+    <div class="container" style="color: red;">
+        <h2>Comentarios</h2>
+    </div>
+
+    {# Comments #}
+    <div class="container">
+        
+        {% for interaction in interactions %}
+
+            <h4>{{interaction.comment}}</h4>
+
+        {% endfor %}
+
+    </div>
+
+
+     <div class="row">
+            <div class="col-md-12">
+                                    <div class="p-3 bg-white border rounded my-4">
+                        <form name="interaction" method="post"><div id="interaction"><div class="form-group"><label for="interaction_comment" class="required">Comment</label><textarea id="interaction_comment" name="interaction[comment]" required="required" class="form-control"></textarea></div><div class="form-group"><button type="submit" id="interaction_save" name="interaction[save]" class="btn-primary btn">Save</button></div><input type="hidden" id="interaction__token" name="interaction[_token]" value="333b55468572728d188545a59f801.PJlLnOfj1wEsoCHiGxL6v_YghaR9Hfx9VVDWT18Wj4Q.V8Ad-J2OozV4knKGUF-C4MZCy-MIZLA8PmKDCjVZvcMP2g_DiabjaG_HUg" /></div></form>
+                    </div>
+                                                                            <div class="col-md-12 my-2 alert alert-info text-justify">
+                                                        <div class="my-3"><strong>diegofernando150 Comentó:</strong></div>
+                            <div>
+                                hello, pues he dado una busqueda y he encontrado este sitio, cuentame qué te parece :D 
+                            </div>
+                        </div>
+                          <div>
+        </div>
+    </div>
+    
+
+
+    <div class="row">
+            <div class="col-md-12">
+                                    <div class="p-3 bg-white border rounded my-4">
+                        <form name="interaction" method="post"><div id="interaction"><div class="form-group"><label for="interaction_comment" class="required">Comment</label><textarea id="interaction_comment" name="interaction[comment]" required="required" class="form-control"></textarea></div><div class="form-group"><button type="submit" id="interaction_save" name="interaction[save]" class="btn-primary btn">Save</button></div><input type="hidden" id="interaction__token" name="interaction[_token]" value="3907836db.6Io3s2gBlmHSGEhcsRPf9ThPxDPNfJxKkk08FRty24c.g9Nh1xJs4lWGKhs4-l6nqggtinS4BdAL-X9pUHE96cDbyXPsBkSiCJF_Ow" /></div></form>
+                    </div>
+                    
+                        <div class="col-md-12 my-2 alert alert-warning border">Un usuario comentó: {{interaction.comment}}</div>
+
+                   
+                            
+                    </div>
+        </div>
+
+
+        ****
+
+        
+
+    </div>
+
+
+
+
+    <div class="row">
+            <div class="col-md-12">
+                <div class="p-3 bg-white border rounded my-4">
+                    <form name="interaction" method="post">
+                        <div id="interaction">
+                                <div class="form-group"><label for="interaction_comment" class="required">Comment</label><textarea id="interaction_comment" name="interaction[comment]" required="required" class="form-control"></textarea></div>                            
+                                <div class="form-group"><button type="submit" id="interaction_save" name="interaction[save]" class="btn-primary btn">Save</button>
+                        </div>
+                                 <input type="hidden" id="interaction__token" name="interaction[_token]" value="897d2a7d9365a2aa00b79707e9175a6d.X3ctMctjFmGADxMKuRcqVkLi23nqed8pILS9uTyu_7k.NC57VbEOYlXUPUBu8lpSCXKAlT6fAJNoS4bo_Fbhzf5sNGlupSYiCMNoYA" />
+                        </div>
+                    </form>
+                </div>
+                        <div class="row">            
+                            <div class="col-md-12">            
+                                <div class="col-md-12 my-2 alert alert-info text-justify">
+                                    <div class="my-3"><strong>un usuario comentó:</strong>
+
+                                        <div>
+                                            {{interaction.comment}}
+                                        </div>
+
+                                    </div>                                  
+                                </div>           
+                            </div>             
+                        </div>  
+            </div>
+    </div>
+
+    
+
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% else %}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="alert alert-dark my-4 border">Si deseas comentar, por favor <a href="/register">Registrate</a> o
+                        <a href="/login">inicia sesión</a>
+                </div>
+                <div class="col-md-12 my-2 alert alert-warning border">NO hay comentarios! sé el primero</div>
+            </div>
+        </div>
+        {% endif %}
+
+
+        if(si hay comentarios)
+
+        //muestra los comentarios
+
+        if(si esta logeado)
+
+        // no debe mostrar la ventana de agg comentarios
+
+        elseif(si no hay comentarios)
+
+        //muestra una ventana vacia
+
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+
+
+
+<div class="row">
+                <div class="col-md-12">
+                    <div class="p-3 bg-white border rounded my-4">
+                        <form name="interaction" method="post">
+                            <div id="interaction">
+                                <div class="form-group"><label for="interaction_comment" class="required">Comment</label><textarea id="interaction_comment" name="interaction[comment]" required="required" class="form-control"></textarea></div>                            
+                                <div class="form-group"><button type="submit" id="interaction_save" name="interaction[save]" class="btn-primary btn">Save</button>
+                            </div>
+                                 <input type="hidden" id="interaction__token" name="interaction[_token]" value="897d2a7d9365a2aa00b79707e9175a6d.X3ctMctjFmGADxMKuRcqVkLi23nqed8pILS9uTyu_7k.NC57VbEOYlXUPUBu8lpSCXKAlT6fAJNoS4bo_Fbhzf5sNGlupSYiCMNoYA" />
+                            </div>
+                        </form>
+                    </div>
+                            <div class="col-md-12 my-2 alert alert-warning border">NO hay comentarios! sé el primero</div>
+                </div>
+            </div>
